@@ -45,6 +45,43 @@ class LinkedList:
         # if we've gotten here, then the target node isn't in our list
         return False
 
+    # def reverseUtil(self, curr, prev): 
+          
+    #     # If last node mark it head 
+    #     if curr.next is None : 
+    #         self.head = curr  
+              
+    #         # Update next to prev node 
+    #         curr.next = prev 
+    #         return 
+          
+    #     # Save curr.next node for recursive call 
+    #     next = curr.next
+  
+    #     # And update next  
+    #     curr.next = prev 
+      
+    #     self.reverseUtil(next, curr)  
+    # # This function mainly calls reverseUtil() 
+    # # with previous as None 
+    # def reverse(self): 
+    #     if self.head is None: 
+    #         return 
+    #     self.reverseUtil(self.head, None) 
+  
+
     def reverse_list(self, node, prev):
         # You must use recursion for this solution
-        pass
+        # returns if no node
+        if self.head is None:
+            return
+        # if the next node is none, sets the head as current node and its next node as previous
+        if node.next_node is None:
+            self.head = node
+            self.head.next_node = prev
+            return
+        # recursive call which submits the next node and the previous node as arguments
+        self.reverse_list(node.next_node, node)
+        # finishes by pointing the last node backwards
+        node.next_node = prev
+        
